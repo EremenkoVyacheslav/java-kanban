@@ -1,3 +1,9 @@
+import manager.Manager;
+import tasks.Epic;
+import tasks.Status;
+import tasks.Subtask;
+import tasks.Task;
+
 public class Main {
     public static void main(String[] args) {
         printMenu();
@@ -6,26 +12,34 @@ public class Main {
     public static void printMenu() {
         Manager manager = new Manager();
 
-        manager.createTask(new Task("Купить бублик", "Очень большой бублик"));
-        manager.createTask(new Task("Съездить на рыбалку", "Поймать рыбу"));
+        manager.createTasks(new Task(1, "Купить бублик", Status.NEW, "Очень большой бублик"));
+        manager.createTasks(new Task(2, "Съездить на рыбалку", Status.NEW, "Поймать рыбу"));
 
-        manager.createTask(new Epic("Написать Трекер Задач", "Для Яндекс Практикума"));
-        manager.createTask(new Subtask("Создать Задачи", "Таски, Сабтаски, Эпики", 3));
-        manager.createTask(new Subtask("Создать Менеджер", "Он за все отвечает", 3));
+        Subtask subtask = new Subtask(1, "Создать Задачи", Status.DONE, "Таски, Сабтаски, Эпики",
+                3);
+        Subtask subtask1 = new Subtask(2, "Создать Менеджер", Status.DONE, "Он за все отвечает",
+                3);
+        Subtask subtask2 = new Subtask(3, "Тут уже кончились идеи", Status.NEW,
+                "Очень важное описание", 4);
 
-        manager.createTask(new Epic("Сдать проект", "Сдать до 15 числа"));
-        manager.createTask(new Subtask("Тут уже кончились идеи", "Очень важное описание", 6));
+        manager.createEpics(new Epic(1, "Написать Трекер Задач", "Для Яндекс Практикума"));
+        manager.createEpics(new Epic(2, "Сдать проект", "Сдать до 15 числа"));
 
-        manager.updateTask(new Task("Уехать жить в горы", "Далекие горы"), 1,
-                "IN_PROGRESS");
-        manager.updateTask(new Subtask("Купить барана", "Волосатого", 6),
-                7, "DONE");
+        manager.updateTask(new Task(1, "Satisfaction", Status.NEW, "Песня такая"));
+        manager.updateSubtask(new Subtask(2, "Яндекс Музыка", Status.IN_PROGRESS, "Вообще зачет",
+                2));
+        manager.updateEpic(new Epic(2, "One, two, free, four", "Песня такая"));
 
-        manager.printAll();
-        manager.getById(2);
-        manager.printEpicTask(3);
-        manager.deleteById(1);
-        manager.deleteById(6);
+        manager.createSubtasks(subtask);
+        manager.createSubtasks(subtask1);
+        manager.createSubtasks(subtask2);
 
+        manager.getAllEpic();
+        manager.getAllTasks();
+        manager.getAllSubtask();
+
+        manager.deleteTask(1);
+        manager.deleteEpic(2);
+        manager.deleteSubtask(5);
     }
 }
