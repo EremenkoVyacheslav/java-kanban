@@ -4,9 +4,9 @@ import com.yandex.praktikum.status.Status;
 
 public class Task {
     private int id;
-    private final String name;
+    private String name;
     private Status status;
-    private final String description;
+    private String description;
 
 
     public int getId() {
@@ -21,6 +21,13 @@ public class Task {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getDescription() {
         return description;

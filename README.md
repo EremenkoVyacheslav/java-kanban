@@ -46,3 +46,4 @@ SPRINT - 4
 6. Объявлен класс InMemoryHistoryManager
 7. Добавлен пакет com.yandex.praktikum.status
 8. Сортировка по пакетам
+9. Добавлены обещанные Сеттеры в пакете tasks :)
