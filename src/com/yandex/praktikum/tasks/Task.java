@@ -1,4 +1,6 @@
-package tasks;
+package com.yandex.praktikum.tasks;
+
+import com.yandex.praktikum.status.Status;
 
 public class Task {
     private int id;

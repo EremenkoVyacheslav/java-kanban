@@ -1,10 +1,12 @@
-package tasks;
+package com.yandex.praktikum.tasks;
+
+import com.yandex.praktikum.status.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Epic extends Task {
-private final List<Integer> epicsSubtask = new ArrayList<>();
+    private final List<Integer> epicsSubtask = new ArrayList<>();
 
     public List<Integer> getEpicsSubtask() {
         return epicsSubtask;
