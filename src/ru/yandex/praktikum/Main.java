@@ -1,11 +1,11 @@
-package com.yandex.praktikum;
+package ru.yandex.praktikum;
 
-import com.yandex.praktikum.manager.TaskManager;
-import com.yandex.praktikum.status.Status;
-import com.yandex.praktikum.tasks.Epic;
-import com.yandex.praktikum.tasks.Subtask;
-import com.yandex.praktikum.tasks.Task;
-import com.yandex.praktikum.utils.Managers;
+import ru.yandex.praktikum.manager.TaskManager;
+import ru.yandex.praktikum.status.Status;
+import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.Subtask;
+import ru.yandex.praktikum.tasks.Task;
+import ru.yandex.praktikum.utils.Managers;
 
 import java.util.List;
 

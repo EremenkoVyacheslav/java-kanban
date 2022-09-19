@@ -1,9 +1,9 @@
-package com.yandex.praktikum.manager;
+package ru.yandex.praktikum.manager;
 
-import com.yandex.praktikum.status.Status;
-import com.yandex.praktikum.tasks.Epic;
-import com.yandex.praktikum.tasks.Subtask;
-import com.yandex.praktikum.tasks.Task;
+import ru.yandex.praktikum.status.Status;
+import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.Subtask;
+import ru.yandex.praktikum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class InMemoryTaskManager implements TaskManager {
     private final HashMap<Integer, Task> tasks = new HashMap<>();
     private final HashMap<Integer, Epic> epics = new HashMap<>();
     private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
-    HistoryManager historyManager;
+    private final HistoryManager historyManager;
 
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;

@@ -1,6 +1,6 @@
-package com.yandex.praktikum.manager;
+package ru.yandex.praktikum.manager;
 
-import com.yandex.praktikum.tasks.Task;
+import ru.yandex.praktikum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;

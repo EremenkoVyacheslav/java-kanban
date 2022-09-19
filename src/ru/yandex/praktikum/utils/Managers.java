@@ -1,9 +1,9 @@
-package com.yandex.praktikum.utils;
+package ru.yandex.praktikum.utils;
 
-import com.yandex.praktikum.manager.HistoryManager;
-import com.yandex.praktikum.manager.InMemoryHistoryManager;
-import com.yandex.praktikum.manager.InMemoryTaskManager;
-import com.yandex.praktikum.manager.TaskManager;
+import ru.yandex.praktikum.manager.HistoryManager;
+import ru.yandex.praktikum.manager.InMemoryHistoryManager;
+import ru.yandex.praktikum.manager.InMemoryTaskManager;
+import ru.yandex.praktikum.manager.TaskManager;
 
 public class Managers {
 
