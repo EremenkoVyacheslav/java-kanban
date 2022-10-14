@@ -8,6 +8,13 @@ public class Task {
     private Status status;
     private String description;
 
+    public Task(int id, String name, Status status, String description) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+        this.description = description;
+
+    }
 
     public int getId() {
         return id;
@@ -41,14 +48,6 @@ public class Task {
         this.status = status;
     }
 
-
-    public Task(int id, String name, Status status, String description) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.description = description;
-
-    }
 
     @Override
     public String toString() {

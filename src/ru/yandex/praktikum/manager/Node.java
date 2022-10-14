@@ -7,7 +7,6 @@ class Node<T> {
     private Node<T> next;
     private Node<T> prev;
 
-
     public Node(T data, Node<T> prev, Node<T> next) {
         this.data = data;
         this.next = next;
