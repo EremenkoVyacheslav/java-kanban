@@ -50,4 +50,6 @@ public interface TaskManager {
     Subtask getSubtask(int id);
 
     Epic getEpic(int id);
+
+    void remove(int id);
 }

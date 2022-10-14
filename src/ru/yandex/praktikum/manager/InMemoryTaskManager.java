@@ -47,19 +47,19 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public ArrayList<Task> getAllTasks() {
-        System.out.println(tasks.toString());
+        System.out.println(tasks);
         return new ArrayList<>(tasks.values());
     }
 
     @Override
     public ArrayList<Subtask> getAllSubtask() {
-        System.out.println(subtasks.toString());
+        System.out.println(subtasks);
         return new ArrayList<>(subtasks.values());
     }
 
     @Override
     public ArrayList<Epic> getAllEpic() {
-        System.out.println(epics.toString());
+        System.out.println(epics);
         return new ArrayList<>(epics.values());
     }
 
@@ -172,6 +172,11 @@ public class InMemoryTaskManager implements TaskManager {
     public Epic getEpic(int id) {
         historyManager.add(epics.get(id));
         return epics.get(id);
+    }
+
+    @Override
+    public void remove(int id) {
+        historyManager.remove(id);
     }
 
 }
