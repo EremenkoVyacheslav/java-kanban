@@ -1,6 +1,6 @@
-package ru.yandex.praktikum.tasks;
+package ru.ya.practicum.tasks;
 
-import ru.yandex.praktikum.status.Status;
+import ru.ya.practicum.status.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,11 @@ public class Epic extends Task {
 
     public Epic(int id, String name, String description) {
         super(id, name, Status.NEW, description);
+    }
+
+    public Epic(String name, String description, TaskType taskType) {
+        super(name, description, taskType);
+
     }
 
     public List<Integer> getEpicsSubtask() {

@@ -1,22 +1,42 @@
-package ru.yandex.praktikum.tasks;
+package ru.ya.practicum.tasks;
 
-import ru.yandex.praktikum.status.Status;
+import ru.ya.practicum.status.Status;
 
 public class Task {
-    private int id;
+    private static int id;
     private String name;
     private Status status;
     private String description;
+    private TaskType taskType;
 
     public Task(int id, String name, Status status, String description) {
         this.id = id;
         this.name = name;
         this.status = status;
         this.description = description;
-
     }
 
-    public int getId() {
+    public Task(String name, String description, TaskType taskType, Status status) {
+        this.name = name;
+        this.description = description;
+        this.taskType = taskType;
+        this.status = status;
+    }
+
+    public Task(String name, String description, TaskType taskType) {
+        this.name = name;
+        this.description = description;
+        this.taskType = taskType;
+    }
+
+    public Task(String name, String description, int id, TaskType taskType) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.taskType = taskType;
+    }
+
+    public static int getId() {
         return id;
     }
 

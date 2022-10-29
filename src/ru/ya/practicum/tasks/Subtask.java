@@ -1,6 +1,6 @@
-package ru.yandex.praktikum.tasks;
+package ru.ya.practicum.tasks;
 
-import ru.yandex.praktikum.status.Status;
+import ru.ya.practicum.status.Status;
 
 public class Subtask extends Task {
     private int idEpic;
@@ -8,6 +8,11 @@ public class Subtask extends Task {
     public Subtask(int id, String name, Status status, String description, int idEpic) {
         super(id, name, status, description);
         this.idEpic = idEpic;
+    }
+
+    public Subtask(String name, String description, int idEpic, TaskType taskType) {
+        super(name, description, idEpic, taskType);
+
     }
 
     public int getIdEpic() {

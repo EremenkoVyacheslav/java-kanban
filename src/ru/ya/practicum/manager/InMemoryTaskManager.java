@@ -1,9 +1,11 @@
-package ru.yandex.praktikum.manager;
+package ru.ya.practicum.manager;
 
-import ru.yandex.praktikum.status.Status;
-import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.Subtask;
-import ru.yandex.praktikum.tasks.Task;
+import org.jetbrains.annotations.NotNull;
+import ru.ya.practicum.tasks.Subtask;
+import ru.ya.practicum.tasks.Task;
+import ru.ya.practicum.status.Status;
+import ru.ya.practicum.tasks.Epic;
+import ru.ya.practicum.utils.Managers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,42 +15,38 @@ import java.util.Map;
 public class InMemoryTaskManager implements TaskManager {
     private int id = 1;
 
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
-    private final HashMap<Integer, Epic> epics = new HashMap<>();
-    private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
-    private final HistoryManager historyManager;
+    final HashMap<Integer, Task> tasks = new HashMap<>();
+    final HashMap<Integer, Epic> epics = new HashMap<>();
+    final HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    final HistoryManager historyManager = Managers.getDefaultHistory();
 
-    public InMemoryTaskManager(HistoryManager historyManager) {
-        this.historyManager = historyManager;
-    }
 
     @Override
+    @NotNull
     public Task createTasks(Task task) {
-        if (task != null) {
-            task.setId(id++);
-            tasks.put(task.getId(), task);
+        task.setId(id++);
+        tasks.put(task.getId(), task);
 
-        }
         return task;
     }
 
     @Override
+    @NotNull
     public Epic createEpics(Epic epic) {
-        if (epic != null) {
-            epic.setId(id++);
-            epics.put(epic.getId(), epic);
-        }
+
+        epic.setId(id++);
+        epics.put(epic.getId(), epic);
+
         return epic;
     }
 
     @Override
+    @NotNull
     public Subtask createSubtasks(Subtask subtask) {
-        if (subtask != null) {
-            subtask.setId(id++);
-            subtasks.put(subtask.getId(), subtask);
-            epics.get(subtask.getIdEpic()).getEpicsSubtask().add(subtask.getId());
-            updateStatus(epics.get(subtask.getIdEpic()));
-        }
+        subtask.setId(id++);
+        subtasks.put(subtask.getId(), subtask);
+        epics.get(subtask.getIdEpic()).getEpicsSubtask().add(subtask.getId());
+        updateStatus(epics.get(subtask.getIdEpic()));
         return subtask;
     }
 
@@ -109,9 +107,9 @@ public class InMemoryTaskManager implements TaskManager {
         subtasks.clear();
     }
 
-    @Override
+    @Override @NotNull
     public void updateStatus(Epic epic) {
-        if (epic != null) {
+
             int statusNew = 0;
             int statusDone = 0;
             for (var idSubtask : epic.getEpicsSubtask()) {
@@ -129,7 +127,7 @@ public class InMemoryTaskManager implements TaskManager {
                     epic.setStatus(Status.IN_PROGRESS);
                 }
                 epics.put(epic.getId(), epic);
-            }
+
         }
     }
 
@@ -144,26 +142,20 @@ public class InMemoryTaskManager implements TaskManager {
         return subtasksEpic;
     }
 
-    @Override
+    @Override @NotNull
     public void updateTask(Task task) {
-        if (task != null) {
             tasks.put(task.getId(), task);
-        }
     }
 
-    @Override
+    @Override @NotNull
     public void updateSubtask(Subtask subtask) {
-        if (subtask != null) {
             subtasks.put(subtask.getId(), subtask);
-        }
     }
 
-    @Override
+    @Override @NotNull
     public void updateEpic(Epic epic) {
-        if (epic != null) {
             updateStatus(epic);
             epics.put(epic.getId(), epic);
-        }
     }
 
     @Override
@@ -192,5 +184,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void remove(int id) {
         historyManager.remove(id);
+    }
+
+    public void updateId(int id) {
+        this.id = Math.max(this.id, id);
     }
 }

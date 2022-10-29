@@ -1,5 +1,6 @@
-package ru.yandex.praktikum.manager;
-import ru.yandex.praktikum.tasks.Task;
+package ru.ya.practicum.manager;
+import ru.ya.practicum.tasks.Task;
+
 import java.util.List;
 
 public interface HistoryManager {

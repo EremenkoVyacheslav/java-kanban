@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.manager;
+package ru.ya.practicum.manager;
 
 
 class Node<T> {

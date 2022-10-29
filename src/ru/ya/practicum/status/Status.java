@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.status;
+package ru.ya.practicum.status;
 
 public enum Status {
     NEW,

@@ -1,6 +1,6 @@
-package ru.yandex.praktikum.manager;
+package ru.ya.practicum.manager;
 
-import ru.yandex.praktikum.tasks.Task;
+import ru.ya.practicum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +59,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (node != null) {
             Node<Task> next = node.getNext();
             Node<Task> prev = node.getPrev();
+
             node.setData(null);
 
             if (head == node) {
