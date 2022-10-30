@@ -29,10 +29,11 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return " Эпик {" +
-                " Название = '" + getName() + '\'' +
-                ", Описание= '" + getDescription() + '\'' +
-                ", Статус= '" + getStatus() + '\'' +
-                '}';
+        return  getId() + ", "
+                + TaskType.EPIC +
+                ", " + getName() + ' ' +
+                ", " + getStatus() + ' ' +
+                ", " + getDescription() + ' ' +
+                ", " + getId();
     }
 }

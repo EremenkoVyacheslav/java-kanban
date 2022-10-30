@@ -71,12 +71,12 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Задача {" +
-                "id = " + id +
-                ", Название = '" + name + '\'' +
-                ", Описание = '" + description + '\'' +
-                ", Статус = " + status +
-                '}';
+        return  getId() + ", "
+                + TaskType.TASK +
+                ", " + getName() + ' ' +
+                ", " + getStatus() + ' ' +
+                ", " + getDescription() + ' ' +
+                ", " + getId();
     }
 }
 

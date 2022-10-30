@@ -38,7 +38,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         fileBackedTasksManager.createTasks(task);
         Task task1 = new Task("Съездить на рыбалку", "Поймать рыбу", TaskType.TASK, Status.IN_PROGRESS);
         fileBackedTasksManager.createTasks(task1);
-        Epic epic = new Epic("Тут уже кончились идеи", "Очень важное описание", TaskType.EPIC);
+        Epic epic = new Epic("Тут уже кончились идеи ", "Очень важное описание", TaskType.EPIC);
         fileBackedTasksManager.createEpics(epic);
         Subtask subtask = new Subtask("Господи, помоги это решить", "Очень надо", epic.getId(), TaskType.SUBTASK);
         fileBackedTasksManager.createSubtasks(subtask);

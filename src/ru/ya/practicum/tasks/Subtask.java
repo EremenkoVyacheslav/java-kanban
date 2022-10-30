@@ -25,10 +25,12 @@ public class Subtask extends Task {
     }
 
     public String toString() {
-        return " SubTask id = " + getId() +
-                ", Название = " + getName() +
-                ", Описание = " + getDescription() +
-                ", Относится к эпику = " + getIdEpic();
+        return  getId() + ", "
+                + TaskType.SUBTASK +
+                ", " + getName() + ' ' +
+                ", " + Status.IN_PROGRESS + ' ' +
+                ", " + getDescription() + ' ' +
+                ", " + idEpic;
     }
 
 }
