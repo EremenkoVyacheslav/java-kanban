@@ -38,15 +38,20 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         fileBackedTasksManager.createTasks(task);
         Task task1 = new Task("Съездить на рыбалку", "Поймать рыбу", TaskType.TASK, Status.IN_PROGRESS);
         fileBackedTasksManager.createTasks(task1);
-        Epic epic1 = new Epic("Тут уже кончились идеи", "Очень важное описание", TaskType.EPIC);
-        fileBackedTasksManager.createEpics(epic1);
+        Epic epic = new Epic("Тут уже кончились идеи", "Очень важное описание", TaskType.EPIC);
+        fileBackedTasksManager.createEpics(epic);
+        Subtask subtask = new Subtask("Господи, помоги это решить", "Очень надо", epic.getId(), TaskType.SUBTASK);
+        fileBackedTasksManager.createSubtasks(subtask);
+        Subtask subtask1 = new Subtask("Скоро Новый Год", "Нужно купить подарки", epic.getId(), TaskType.SUBTASK);
+        fileBackedTasksManager.createSubtasks(subtask1);
 
 
-        fileBackedTasksManager.getTask(Task.getId());
-        fileBackedTasksManager.getEpic(Task.getId());
 
         System.out.println(fileBackedTasksManager.getAllTasks());
         System.out.println(fileBackedTasksManager.getAllEpic());
+        System.out.println(fileBackedTasksManager.getAllSubtask());
+
+
     }
 
 
@@ -113,7 +118,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         List<Task> tasks = historyManager.getHistory();
         List<String> ids = new ArrayList<>();
         for (Task task : tasks) {
-            int id = Task.getId();
+            int id = task.getId();
             ids.add(String.valueOf(id));
         }
         return String.join(",", ids);
@@ -160,18 +165,18 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
                 switch (typeTask) {
                     case "TASK" -> {
                         Task task = taskFromString(lines[i]);
-                        tasksManager.tasks.put(Task.getId(), task);
-                        tasksManager.updateId(Task.getId());
+                        tasksManager.tasks.put(task.getId(), task);
+                        tasksManager.updateId(task.getId());
                     }
                     case "EPIC" -> {
                         Epic epic = epicFromString(lines[i]);
-                        tasksManager.epics.put(Task.getId(), epic);
-                        tasksManager.updateId(Task.getId());
+                        tasksManager.epics.put(epic.getId(), epic);
+                        tasksManager.updateId(epic.getId());
                     }
                     case "SUBTASK" -> {
                         Subtask subtask = subtaskFromString(lines[i]);
-                        tasksManager.subtasks.put(Task.getId(), subtask);
-                        tasksManager.updateId(Task.getId());
+                        tasksManager.subtasks.put(subtask.getId(), subtask);
+                        tasksManager.updateId(subtask.getId());
                     }
                 }
             }

@@ -3,7 +3,7 @@ package ru.ya.practicum.tasks;
 import ru.ya.practicum.status.Status;
 
 public class Task {
-    private static int id;
+    private int id;
     private String name;
     private Status status;
     private String description;
@@ -36,7 +36,7 @@ public class Task {
         this.taskType = taskType;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
