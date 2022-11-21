@@ -2,16 +2,19 @@ package ru.ya.practicum.tasks;
 
 import ru.ya.practicum.status.Status;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class Subtask extends Task {
     private int idEpic;
 
-    public Subtask(int id, String name, Status status, String description, int idEpic) {
-        super(id, name, status, description);
+    public Subtask(int id, String taskName, Status status, String description, TaskType taskType, LocalDateTime startTime, Duration duration, int idEpic) {
+        super(id, taskName, description, status, taskType, startTime, duration);
         this.idEpic = idEpic;
     }
 
-    public Subtask(String name, String description, int idEpic, TaskType taskType) {
-        super(name, description, taskType);
+    public Subtask(String name, String description, int idEpic, Status status) {
+        super(name, description, status);
         this.idEpic = idEpic;
 
     }
@@ -25,12 +28,15 @@ public class Subtask extends Task {
     }
 
     public String toString() {
-        return  getId() + ", "
-                + TaskType.SUBTASK +
+        return  getId() +
+               ", " + TaskType.SUBTASK + ' ' +
                 ", " + getName() + ' ' +
                 ", " + Status.IN_PROGRESS + ' ' +
                 ", " + getDescription() + ' ' +
-                ", " + idEpic;
+                ", " + idEpic + ' ' +
+                ", " + getStartTime() + ' ' +
+                ", " + getDuration() + ' ' +
+                ", " + getEndTime();
     }
 
 }

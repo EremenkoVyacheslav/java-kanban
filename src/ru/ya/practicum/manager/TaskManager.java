@@ -1,5 +1,6 @@
 package ru.ya.practicum.manager;
 
+import org.jetbrains.annotations.NotNull;
 import ru.ya.practicum.tasks.Subtask;
 import ru.ya.practicum.tasks.Task;
 import ru.ya.practicum.tasks.Epic;
@@ -9,11 +10,11 @@ import java.util.List;
 
 public interface TaskManager {
 
-    Task createTasks(Task task);
+    @NotNull void createTasks(Task task);
 
-    Epic createEpics(Epic epic);
+    @NotNull void createEpics(Epic epic);
 
-    Subtask createSubtasks(Subtask subtask);
+    void createSubtasks(Subtask subtask);
 
     ArrayList<Task> getAllTasks();
 
@@ -52,4 +53,8 @@ public interface TaskManager {
     Epic getEpic(int id);
 
     void remove(int id);
+    public void getTaskEndTime(Task task);
+    public void getEpicEndTime(Epic epic);
+    public void intersection();
+    public void getSubtaskEndTime(Subtask subtask);
 }

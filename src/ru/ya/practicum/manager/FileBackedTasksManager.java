@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +22,12 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     private final String fileName;
     private static String[] lines;
     private static int id;
-    private static TaskType taskType;
+    protected static TaskType taskType;
     private static String name;
     private static Status status;
     private static String description;
+    private static LocalDateTime startTime;
+    private static Duration duration;
 
     public FileBackedTasksManager(File file) {
 
@@ -34,22 +38,17 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     public static void main(String[] args) {
 
         FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager(new File(String.valueOf(file)));
-        Task task = new Task("Купить бублик", "Очень большой бублик", TaskType.TASK, Status.NEW);
+        Task task = new Task("Купить бублик", "Очень большой бублик",
+                Status.NEW, LocalDateTime.now(), Duration.ofMinutes(5));
         fileBackedTasksManager.createTasks(task);
-        Task task1 = new Task("Съездить на рыбалку", "Поймать рыбу", TaskType.TASK, Status.IN_PROGRESS);
+        Task task1 = new Task("Съездить на рыбалку", "Поймать рыбу",
+                Status.IN_PROGRESS, LocalDateTime.now(), Duration.ofMinutes(10));
         fileBackedTasksManager.createTasks(task1);
-        Epic epic = new Epic("Тут уже кончились идеи ", "Очень важное описание", TaskType.EPIC);
+        Epic epic = new Epic("Тут уже кончились идеи ", "Очень важное описание", Status.NEW);
         fileBackedTasksManager.createEpics(epic);
-        Subtask subtask = new Subtask("Господи, помоги это решить", "Очень надо", epic.getId(), TaskType.SUBTASK);
-        fileBackedTasksManager.createSubtasks(subtask);
-        Subtask subtask1 = new Subtask("Скоро Новый Год", "Нужно купить подарки", epic.getId(), TaskType.SUBTASK);
+        Subtask subtask1 = new Subtask("Скоро Новый Год",
+                "Нужно купить подарки", epic.getId(), Status.NEW);
         fileBackedTasksManager.createSubtasks(subtask1);
-
-
-
-        System.out.println(fileBackedTasksManager.getAllTasks());
-        System.out.println(fileBackedTasksManager.getAllEpic());
-        System.out.println(fileBackedTasksManager.getAllSubtask());
 
 
     }
@@ -73,8 +72,10 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         name = lines[2];
         status = statusFromString(lines[3]);
         description = lines[4];
+        startTime = LocalDateTime.parse(lines[5]);
+        duration = Duration.parse(lines[6]);
 
-        Task task = new Task(name, description, taskType, status);
+        Task task = new Task(name, description, status, startTime, duration);
         task.setId(id);
         task.setStatus(status);
         return task;
@@ -88,8 +89,10 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         name = lines[2];
         status = statusFromString(lines[3]);
         description = lines[4];
+        startTime = LocalDateTime.parse(lines[5]);
+        duration = Duration.parse(lines[6]);
 
-        Epic epic = new Epic(name, description, taskType);
+        Epic epic = new Epic(name, description, status);
         epic.setId(id);
         epic.setStatus(status);
         return epic;
@@ -105,8 +108,10 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         status = statusFromString(lines[3]);
         description = lines[4];
         int epic = Integer.parseInt(lines[5]);
+        startTime = LocalDateTime.parse(lines[6]);
+        duration = Duration.parse(lines[7]);
 
-        Subtask subtask = new Subtask(name, description, epic, taskType);
+        Subtask subtask = new Subtask(name, description, epic, status);
         subtask.setId(id);
         subtask.setStatus(status);
         return subtask;
@@ -154,11 +159,6 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             String[] lines = readFile.split(System.lineSeparator());
             for (int i = 1; i < lines.length; i++) {
                 String line = lines[i];
-                if (line.isEmpty()) {
-                    line = lines[i + 1];
-                    break;
-                }
-
                 String[] type = line.split(",");
                 String typeTask = type[3];
 
@@ -186,12 +186,12 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         return tasksManager;
     }
 
-    private void save() {
+    public void save() {
 
         try {
 
             FileWriter fileWriter = new FileWriter(fileName);
-            fileWriter.write("id,type,name,status,description,epic \n");
+            fileWriter.write("id,type,name,status,description,epic,startTime,duration,endTime \n");
             for (Task task : tasks.values()) {
                 fileWriter.write(task.toString() + System.lineSeparator());
             }
@@ -210,25 +210,30 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     }
 
     @Override
-    public @NotNull Task createTasks(@NotNull Task task) {
-        task = super.createTasks(task);
-        save();
-        return task;
+    public void createTasks(Task task) {
+        if (task!= null) {
+            super.createTasks(task);
+            save();
+        }
+
     }
 
     @Override
-    public @NotNull Epic createEpics(@NotNull Epic epic) {
-        epic = super.createEpics(epic);
-        save();
-        return epic;
+    public void createEpics(Epic epic) {
+        if(epic != null) {
+            super.createEpics(epic);
+            save();
+        }
+
     }
 
     @Override
+    public void createSubtasks(Subtask subtask) {
+        if(subtask != null) {
+            super.createSubtasks(subtask);
+            save();
+        }
 
-    public @NotNull Subtask createSubtasks(@NotNull Subtask subtask) {
-        subtask = super.createSubtasks(subtask);
-        save();
-        return subtask;
     }
 
     @Override

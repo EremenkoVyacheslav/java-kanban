@@ -2,31 +2,42 @@ package ru.ya.practicum.tasks;
 
 import ru.ya.practicum.status.Status;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class Task {
     private int id;
     private String name;
     private Status status;
     private String description;
     private TaskType taskType;
+    private LocalDateTime startTime;
+    private Duration duration;
+    private LocalDateTime endTime;
 
-    public Task(int id, String name, Status status, String description) {
+    public Task(int id, String name, String description, Status status, TaskType taskType,
+                                                                        LocalDateTime startTime, Duration duration) {
         this.id = id;
         this.name = name;
-        this.status = status;
         this.description = description;
+        this.status = status;
+        this.taskType = taskType;
+        this.duration = duration;
+        this.startTime = startTime;
     }
 
-    public Task(String name, String description, TaskType taskType, Status status) {
+    public Task(String name, String description,  Status status, LocalDateTime startTime, Duration duration) {
         this.name = name;
         this.description = description;
-        this.taskType = taskType;
         this.status = status;
+        this.startTime = startTime;
+        this.duration = duration;
     }
 
-    public Task(String name, String description, TaskType taskType) {
+    public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
-        this.taskType = taskType;
+        this.status = status;
     }
 
     public Task(String name, String description, int id, TaskType taskType) {
@@ -34,6 +45,38 @@ public class Task {
         this.description = description;
         this.id = id;
         this.taskType = taskType;
+    }
+
+    public TaskType getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(TaskType taskType) {
+        this.taskType = taskType;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     public int getId() {
@@ -76,7 +119,9 @@ public class Task {
                 ", " + getName() + ' ' +
                 ", " + getStatus() + ' ' +
                 ", " + getDescription() + ' ' +
-                ", " + getId();
+                ", " + getStartTime() + ' ' +
+                ", " + getDuration() + ' ' +
+                ", " + getEndTime();
     }
 }
 
