@@ -1,4 +1,4 @@
-package ru.ya.practicum.tasks;
+package main.task.tasks;
 
 public enum TaskType {
 

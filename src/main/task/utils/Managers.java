@@ -1,9 +1,9 @@
-package ru.ya.practicum.utils;
+package main.task.utils;
 
-import ru.ya.practicum.manager.HistoryManager;
-import ru.ya.practicum.manager.InMemoryHistoryManager;
-import ru.ya.practicum.manager.InMemoryTaskManager;
-import ru.ya.practicum.manager.TaskManager;
+import main.manager.HistoryManager;
+import main.manager.InMemoryHistoryManager;
+import main.manager.InMemoryTaskManager;
+import main.manager.TaskManager;
 
 public class Managers {
 

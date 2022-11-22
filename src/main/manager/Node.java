@@ -1,4 +1,4 @@
-package ru.ya.practicum.manager;
+package main.manager;
 
 
 class Node<T> {

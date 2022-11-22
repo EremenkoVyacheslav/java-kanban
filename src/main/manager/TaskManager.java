@@ -1,9 +1,9 @@
-package ru.ya.practicum.manager;
+package main.manager;
 
 import org.jetbrains.annotations.NotNull;
-import ru.ya.practicum.tasks.Subtask;
-import ru.ya.practicum.tasks.Task;
-import ru.ya.practicum.tasks.Epic;
+import main.task.tasks.Subtask;
+import main.task.tasks.Task;
+import main.task.tasks.Epic;
 
 import java.util.ArrayList;
 import java.util.List;

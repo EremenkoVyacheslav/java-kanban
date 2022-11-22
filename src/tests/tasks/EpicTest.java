@@ -1,13 +1,13 @@
-package ru.ya.practicum.tests.tasks;
+package tests.tasks;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.ya.practicum.manager.InMemoryTaskManager;
-import ru.ya.practicum.manager.TaskManager;
-import ru.ya.practicum.status.Status;
-import ru.ya.practicum.tasks.Epic;
-import ru.ya.practicum.tasks.Subtask;
-import ru.ya.practicum.tasks.TaskType;
+import main.manager.InMemoryTaskManager;
+import main.manager.TaskManager;
+import main.task.status.Status;
+import main.task.tasks.Epic;
+import main.task.tasks.Subtask;
+import main.task.tasks.TaskType;
 
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,10 +1,10 @@
-package ru.ya.practicum.manager;
+package main.manager;
 
-import ru.ya.practicum.tasks.Subtask;
-import ru.ya.practicum.tasks.Task;
-import ru.ya.practicum.status.Status;
-import ru.ya.practicum.tasks.Epic;
-import ru.ya.practicum.utils.Managers;
+import main.task.tasks.Subtask;
+import main.task.tasks.Task;
+import main.task.status.Status;
+import main.task.tasks.Epic;
+import main.task.utils.Managers;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

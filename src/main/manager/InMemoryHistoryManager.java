@@ -1,6 +1,6 @@
-package ru.ya.practicum.manager;
+package main.manager;
 
-import ru.ya.practicum.tasks.Task;
+import main.task.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;

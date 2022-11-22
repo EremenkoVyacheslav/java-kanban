@@ -1,5 +1,5 @@
-package ru.ya.practicum.manager;
-import ru.ya.practicum.tasks.Task;
+package main.manager;
+import main.task.tasks.Task;
 
 import java.util.List;
 

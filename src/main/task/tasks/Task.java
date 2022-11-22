@@ -1,6 +1,6 @@
-package ru.ya.practicum.tasks;
+package main.task.tasks;
 
-import ru.ya.practicum.status.Status;
+import main.task.status.Status;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
-package ru.ya.practicum.tests.manager;
+package tests.manager;
 
 import org.junit.jupiter.api.BeforeEach;
-import ru.ya.practicum.manager.InMemoryTaskManager;
+import main.manager.InMemoryTaskManager;
 
 
 public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {

@@ -1,4 +1,4 @@
-package ru.ya.practicum.status;
+package main.task.status;
 
 public enum Status {
     NEW,

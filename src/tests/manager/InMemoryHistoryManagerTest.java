@@ -1,14 +1,14 @@
-package ru.ya.practicum.tests.manager;
+package tests.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.ya.practicum.manager.HistoryManager;
-import ru.ya.practicum.manager.InMemoryHistoryManager;
-import ru.ya.practicum.status.Status;
-import ru.ya.practicum.tasks.Epic;
-import ru.ya.practicum.tasks.Subtask;
-import ru.ya.practicum.tasks.Task;
-import ru.ya.practicum.tasks.TaskType;
+import main.manager.HistoryManager;
+import main.manager.InMemoryHistoryManager;
+import main.task.status.Status;
+import main.task.tasks.Epic;
+import main.task.tasks.Subtask;
+import main.task.tasks.Task;
+import main.task.tasks.TaskType;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

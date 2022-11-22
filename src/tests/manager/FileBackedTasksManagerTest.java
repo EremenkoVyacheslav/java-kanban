@@ -1,12 +1,12 @@
-package ru.ya.practicum.tests.manager;
+package tests.manager;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.ya.practicum.manager.FileBackedTasksManager;
-import ru.ya.practicum.status.Status;
-import ru.ya.practicum.tasks.Epic;
-import ru.ya.practicum.tasks.Task;
+import main.manager.FileBackedTasksManager;
+import main.task.status.Status;
+import main.task.tasks.Epic;
+import main.task.tasks.Task;
 
 import java.io.File;
 import java.util.List;
